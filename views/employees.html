@@ -1,0 +1,37 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+    <h1>Employees and Managers</h1>
+    <form method='POST' action='/employees'>
+      <h4>Add an Employee</h4>
+      <strong>Employee Email (must be a valid email):</strong>
+      <input name='email' placeholder="email" />
+      <br />
+      <strong>Set Manager:</strong>
+      <select name='managerId'>
+        <option value='-1'>None</option>
+
+        {% for employee in employees %}
+        <option value='{{ employee.id }}'>{{ employee.name }}</option>
+        {% endfor %}
+      </select>
+        <br />
+      <button>Create Employee</button>
+    </form>
+    <ul>
+      {% for employee in employees %}
+      <li>
+        {{ employee.email }}
+        <br />
+        Email Provider: {{ employee.emailProvider }}
+        <br />
+        name: {{ employee.name }}
+        <br />
+        manager: {{ employee.name }}
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
