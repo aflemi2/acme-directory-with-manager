@@ -1,0 +1,21 @@
+<html>
+  <head>
+ <link rel='stylesheet' href='/vendor/bootstrap/dist/css/bootstrap.css' />
+    </head>
+    <body>
+      <div class='container'>
+        <h1>Employees and Managers</h1>
+      <ul>
+        <li>
+      <a href='/'> Home </a>
+        </li>
+        <li>
+      <a href='/employees'> Employees </a>
+      </li>
+    </ul>
+      <div>We have <span class='badge badge-primary'>{{ employeeCount }}</span> employees and <span class='badge badge-primary'>{{ managerCount }}</span> manager</div>
+        {% block content %}
+      {% endblock %}
+    </div>
+    </body>
+</html>

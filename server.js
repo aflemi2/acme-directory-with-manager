@@ -1,25 +1,32 @@
 const express = require("express");
 const app = express();
-const db = require('./db')
+const db = require('./db');
 const { Employee } = db.model;
+const path =require('path');
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
 nunjucks.configure({ noCache: true });
+
+app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
+
 app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
 
 app.use(bodyParser.urlencoded());
-app.get('/employees', (req, res, next)=>{
-  return Employee.findAll({ include: [ Employee ]})
-  .then(employees => res.render('employees', { employees }))
-  .catch(next)
-});
 
-app.post('/employees', (req, res, next)=>{
-  Employee.createFromForm(req.body)
-  .then(()=>res.redirect('/employees'))
-  .catch(next)
+
+app.use((req, res, next)=>{
+Employee.findAll()
+.then( employees=> {
+  res.locals.employeeCount = employees.length;
+  next()
 })
+.catch(next)
+})
+
+app.use('/', require('./routes'));
+
+
 
 db.sync()
 .then(()=>db.seed())

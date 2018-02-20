@@ -1,11 +1,8 @@
-<html>
-  <head>
-
-  </head>
-  <body>
-    <h1>Employees and Managers</h1>
+{% extends './layout.html' %}
+  {% block content %}
     <form method='POST' action='/employees'>
-      <h4>Add an Employee</h4>
+           <br />
+      <h5>Add an Employee</h5>
       <strong>Employee Email (must be a valid email):</strong>
       <input name='email' placeholder="email" />
       <br />
@@ -33,5 +30,5 @@
       </li>
       {% endfor %}
     </ul>
-  </body>
-</html>
+
+      {% endblock %}
