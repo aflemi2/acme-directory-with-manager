@@ -1,10 +1,11 @@
 {% extends './layout.html' %}
   {% block content %}
-  <div style="display: flex; flex-wrap: wrap">
+<div style="display: flex; flex-wrap: wrap">
+  <div style='width: 33%; background-color: #efefef; padding: 10px; color: black' class="form-control">
     <form method='POST' action='/employees'>
 
            <br />
-      <h5>Add an Employee</h5>
+      <h5>Add Employee</h5>
       <strong>Employee Email (must be a valid email):</strong>
       <input name='email' placeholder="email" />
       <br />
@@ -18,10 +19,16 @@
       </select>
         <br />
       <button>Create Employee</button>
+  </div>
+
+
     </form>
-    <ul>
+
       {% for employee in employees %}
+          <ul>
+<div style='width: 33%; padding: 10px;'>
       <li>
+
         {{ employee.email }}
         <br />
         Email Provider: {{ employee.emailProvider }}
@@ -30,7 +37,11 @@
         <br />
         manager: {{ employee.name }}
       </li>
+        </div>
+            </ul>
       {% endfor %}
-    </ul>
+
+
+
 </div>
       {% endblock %}
