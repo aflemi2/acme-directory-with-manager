@@ -13,20 +13,14 @@ app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
 
 app.use(bodyParser.urlencoded());
-
-
-app.use((req, res, next)=>{
-Employee.findAll()
-.then( employees=> {
-  res.locals.employeeCount = employees.length;
-  next()
-})
-.catch(next)
-})
+app.use(require('method-override')('_method'));
 
 app.use('/', require('./routes'));
 
-
+app.use((err, req, res, next)=>{
+  console.log(err + 'HEEERRRREEE');
+  res.send('You have made an error')
+})
 
 db.sync()
 .then(()=>db.seed())
