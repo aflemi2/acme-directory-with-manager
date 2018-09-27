@@ -20,7 +20,7 @@
   </div>
       {% for employee in employees %}
   <div style='width: 33%; padding: 10px;'>
-    <form method='POST' action='/employees/{{ employee.id}}?_method=PUT' style='width: 90%'>
+    <form method='POST' action='/employees/{{ employee.id }}?_method=PUT' style='width: 90%'>
       <strong>Email Provider:</strong> {{ employee.emailProvider }}
       <br />
       <strong>Employee Name:</strong> {{ employee.name }}

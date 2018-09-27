@@ -18,7 +18,7 @@ app.use(require('method-override')('_method'));
 app.use('/', require('./routes'));
 
 app.use((err, req, res, next)=>{
-  console.log(err + 'HEEERRRREEE');
+  console.log(err + 'HEEERRREEE');
   res.send('You have made an error')
 })
 
